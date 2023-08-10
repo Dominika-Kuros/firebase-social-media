@@ -10,13 +10,17 @@ export const Navbar = () => {
   return (
     <div>
       <Link to="/">Home </Link>
-      <Link to="/login">Login </Link>
+      {!user ? (
+        <Link to="/login">Login </Link>
+      ) : (
+        <Link to="/createpost">Create Post </Link>
+      )}
 
       <div>
         {user && (
           <>
             <p>{user?.displayName}</p>
-            <img src={user?.photoURL || ""} />
+            <img src={user?.photoURL || ""} alt="user" />
             <button onClick={signUserOut}> Log Out</button>
           </>
         )}
